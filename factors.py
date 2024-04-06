@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
-if __name__ == "__main__":
+def factorize():
+    """ A function to search file and factorize the given set of numbers into two prime numbers """
     import sys
     import os
 
@@ -13,37 +14,28 @@ if __name__ == "__main__":
     else:
         try:
             file_path = sys.argv[1]
-
             if os.path.isfile(file_path):
-
-                numbers = [2, 3]
-                with open(file_path, 'r') as file:
-                    content = file.read()
-
-                    m_c = ''
-                    average = ''
-
-                    for i in content:
-                        if i.isdigit():
-                            divisor = None
-
-                            for j in range(1, int(i)):
-                                if j > 1:
-                                    if int(i) % j == 0:
-                                        divisor = j
-                                        # print(divisor)
-                                        average = round(int(i) / divisor)
-                                        print(divisor)
-
-                                # print("{}={}*{}".format(i, factor1, factor2))
-                            # else:
-                            #     print("{} is a prime number".format(i))
-                        else:
-                            pass
-                    # print("{}={}/2".format(m_c, average))
+                with open(file_path, 'r') as f:
+                    for line in f:
+                        num = int(line)
+                        if num % 2 == 0:
+                            print("{}={}*{}".format(num, num // 2, 2))
+                            continue
+                        i = 3
+                        while i < num // 2:
+                            if num % i == 0:
+                                print("{}={}*{}".format(num, num // i, i))
+                                break
+                            i = i + 2
+                        if i == (num // 2) + 1:
+                            print("{}={}*{}".format(num, num, 1))
 
             else:
                 print("argument is not a file path !!!")
 
         except Exception as e:
             print("No argument returned !!".format(e))
+
+
+if __name__ == "__main__":
+    factorize()
