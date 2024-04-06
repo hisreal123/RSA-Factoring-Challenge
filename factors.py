@@ -29,7 +29,6 @@ def factorize():
                             i = i + 2
                         if i == (num // 2) + 1:
                             print("{}={}*{}".format(num, num, 1))
-
             else:
                 print("argument is not a file path !!!")
 
