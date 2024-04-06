@@ -31,7 +31,6 @@ def factorize():
                             print("{}={}*{}".format(num, num, 1))
             else:
                 print("argument is not a file path !!!")
-
         except Exception as e:
             print("No argument returned !!".format(e))
 
